@@ -10,13 +10,11 @@ public partial class MainPage : ContentPage
 
     private string currentAppDirectory = FileSystem.Current.AppDataDirectory;
 
-    private string makeShiftScoutingJsonFile;
-    private string makeShiftScoutingHtmlFile;
-    private string makeShiftScoutingStylesFile;
-    private string makeShiftScoutingScriptsFile;
-
-    private string sourceJsonFile;
-
+    private string sourceJsonFile = string.Empty;
+    private string makeShiftScoutingJsonFile = string.Empty;
+    private string makeShiftScoutingHtmlFile = string.Empty;
+    private string makeShiftScoutingStylesFile = string.Empty;
+    private string makeShiftScoutingScriptsFile = string.Empty;
 
     public MainPage()
 	{
@@ -97,6 +95,7 @@ public partial class MainPage : ContentPage
         catch (Exception ex)
         {
             //load error page for json
+            Console.WriteLine(ex.Message);
         }
     }
 
@@ -104,30 +103,79 @@ public partial class MainPage : ContentPage
     {
         try
         {
-            using (StreamWriter streamWriter = new StreamWriter(FileSystem.Current.AppDataDirectory + "MakeShiftScoutingPage.html"))
+            using (StreamWriter streamWriter = new StreamWriter(makeShiftScoutingHtmlFile))
             {
-                //set title using scoutingPage title and page title
-                foreach (ScoutingPageSection scoutingPageSection in scoutingPage.sections)
+                streamWriter.WriteLine("<html><head>");
+                streamWriter.WriteLine(BOOTSTRAP_CSS);
+                streamWriter.WriteLine(BOOTSTRAP_JS);
+                streamWriter.WriteLine(JQUERY);
+                streamWriter.WriteLine(string.Format("<link rel='stylesheet' href='{0}' />", MAKESHIFT_SCOUTING_STYLES_FILENAME.Replace("\\", "")));
+                streamWriter.WriteLine(string.Format("<script src='{0}'></script>", MAKESHIFT_SCOUTING_SCRIPTS_FILENAME.Replace("\\", "")));
+                streamWriter.WriteLine("</head><body>");
+                streamWriter.WriteLine("<h1 class='centered'><span class='GameName'>MakeShift Scouting - {0}</span></h1>", scoutingPage.page_title);
+                streamWriter.WriteLine("<div class='container text-center'>");
+                streamWriter.WriteLine("<div class='row row-cols-auto'>");
+                foreach (ScoutingPageSection section in scoutingPage.sections)
                 {
-
+                    streamWriter.WriteLine("<div class='col colWidth'>");
+                    streamWriter.WriteLine(string.Format("<div class='sectionHeader'>{0}</div>", section.name));
+                    foreach (ScoutingPageSectionField field in section.fields)
+                    {
+                        streamWriter.WriteLine(string.Format("<div>{0}</div>", field.title));
+                        streamWriter.WriteLine(CreateHtmlFieldFromJson(field));
+                    }
+                    streamWriter.WriteLine("</div>");
                 }
+                streamWriter.WriteLine("</div></div>");
+                streamWriter.WriteLine("</body></html>");
+                streamWriter.Flush();
+                streamWriter.Close();
             }
         }
         catch (Exception ex)
         {
             //load error page for parsing
+            Console.WriteLine(ex.Message);
         }
     }
 
     private void RenderPageDefinition()
     {
         webViewScounting.Source = makeShiftScoutingHtmlFile;
-        //using (StreamReader streamReader = new StreamReader(FileSystem.Current.AppDataDirectory + "\\MainPage.xaml"))
-        //{
-        //    xamlPage = streamReader.ReadToEnd();
-        //    streamReader.Close();
-        //}
-        //this.Content.LoadFromXaml(xamlPage);
+    }
+
+    private string CreateHtmlFieldFromJson(ScoutingPageSectionField scoutingSectionField)
+    {
+        string htmlFieldFromJson = string.Empty;
+        switch (scoutingSectionField.type)
+        {
+            case "select":
+                htmlFieldFromJson = "<select id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "'>" + GetChoices(scoutingSectionField.choices, scoutingSectionField.defaultValue) + "</select>";
+                break;
+            case "text":
+                htmlFieldFromJson = "<textarea id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "'></textarea>";
+                break;
+            case "number":
+                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='number' />";
+                break;
+            case "boolean":
+                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='checkbox' role='switch' />";
+                break;
+            case "counter":
+                htmlFieldFromJson = "<div class='number'><span class='minus'>-</span><input class='counter' id ='" + scoutingSectionField.code + "' type='text' value='0'/><span class='plus'>+</span></div>";
+                break;
+        }
+        return htmlFieldFromJson;
+    }
+
+    private string GetChoices(Dictionary<string, string> choices, string defaultValue)
+    {
+        string choices1 = string.Empty;
+        if (!choices.ContainsKey(defaultValue))
+            choices1 = "<option value='' selected disabled>Select option</option>";
+        foreach (KeyValuePair<string, string> choice in choices)
+            choices1 += string.Format("<option value='{0}' {1}>{2}</option>", choice.Key, choice.Key.Equals(defaultValue) ? "selected" : "", choice.Value);
+        return choices1;
     }
 }
 
