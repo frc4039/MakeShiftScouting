@@ -51,6 +51,32 @@ public partial class MainPage : ContentPage
                 File.Copy(sourceJsonFile, makeShiftScoutingJsonFile, true);
             }
         }
+
+        string sourceStylesFile = SOURCE_FOLDER + MAKESHIFT_SCOUTING_STYLES_FILENAME;
+        if (!File.Exists(makeShiftScoutingStylesFile))
+        {
+            File.Copy(sourceStylesFile, makeShiftScoutingStylesFile);
+        }
+        else
+        {
+            if (File.GetLastWriteTime(sourceStylesFile) > File.GetLastWriteTime(makeShiftScoutingStylesFile))
+            {
+                File.Copy(sourceStylesFile, makeShiftScoutingStylesFile, true);
+            }
+        }
+
+        string sourceScriptsFile = SOURCE_FOLDER + MAKESHIFT_SCOUTING_SCRIPTS_FILENAME;
+        if (!File.Exists(makeShiftScoutingScriptsFile))
+        {
+            File.Copy(sourceScriptsFile, makeShiftScoutingScriptsFile);
+        }
+        else
+        {
+            if (File.GetLastWriteTime(sourceScriptsFile) > File.GetLastWriteTime(makeShiftScoutingScriptsFile))
+            {
+                File.Copy(sourceScriptsFile, makeShiftScoutingScriptsFile, true);
+            }
+        }
     }
 
 
