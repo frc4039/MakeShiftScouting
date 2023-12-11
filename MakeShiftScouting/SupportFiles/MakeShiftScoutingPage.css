@@ -1,0 +1,38 @@
+.centered {
+	text-align: center;
+}
+.GameName {
+	background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	font-family: Broadway;
+}
+
+.colWidth {
+	width: min-content;
+}
+
+/*Counter field with -/+ buttons*/
+.number{
+	margin:100px;
+}
+.minus, .plus{
+	cursor:pointer;
+	width:25px;
+	height:25px;
+	background:#f2f2f2;
+	border-radius:4px;
+	border:1px solid #ddd;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+.counter{
+	width: 100px;
+	text-align: center;
+	border:1px solid #ddd;
+	border-radius:4px;
+	display: inline-block;
+	vertical-align: middle;
+}
