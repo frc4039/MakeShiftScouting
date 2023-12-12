@@ -10,12 +10,16 @@
 }
 
 .colWidth {
-	width: min-content;
+	width: fit-content;
+}
+
+.sectionHeader {
+	font-weight: bold;
 }
 
 /*Counter field with -/+ buttons*/
 .number{
-	margin:100px;
+	margin:50px;
 }
 .minus, .plus{
 	cursor:pointer;
