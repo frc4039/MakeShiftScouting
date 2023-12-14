@@ -101,6 +101,7 @@ public partial class MainPage : ContentPage
 
     private void ParsePageObjectIntoHtml()
     {
+        int backgroundCount = 1;
         try
         {
             using (StreamWriter streamWriter = new StreamWriter(makeShiftScoutingHtmlFile))
@@ -117,14 +118,19 @@ public partial class MainPage : ContentPage
                 streamWriter.WriteLine("<div class='row row-cols-auto'>");
                 foreach (ScoutingPageSection section in scoutingPage.sections)
                 {
-                    streamWriter.WriteLine("<div class='col colWidth'>");
-                    streamWriter.WriteLine(string.Format("<div class='sectionHeader'>{0}</div>", section.name));
+                    streamWriter.WriteLine("<div class='col colWidth'><div class='columnContents'>");
+                    streamWriter.WriteLine(string.Format("<div class='sectionHeader headerBackground{1}'>{0}</div>", section.name.ToUpper(), backgroundCount));
+                    backgroundCount++;
+                    if (backgroundCount > 7)
+                    {
+                        backgroundCount = 1;
+                    }
                     foreach (ScoutingPageSectionField field in section.fields)
                     {
                         streamWriter.WriteLine(string.Format("<div>{0}</div>", field.title));
                         streamWriter.WriteLine(CreateHtmlFieldFromJson(field));
                     }
-                    streamWriter.WriteLine("</div>");
+                    streamWriter.WriteLine("</div></div>");
                 }
                 streamWriter.WriteLine("</div></div>");
                 streamWriter.WriteLine("</body></html>");
@@ -150,16 +156,16 @@ public partial class MainPage : ContentPage
         switch (scoutingSectionField.type)
         {
             case "select":
-                htmlFieldFromJson = "<select id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "'>" + GetChoices(scoutingSectionField.choices, scoutingSectionField.defaultValue) + "</select>";
+                htmlFieldFromJson = "<select id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle'>" + GetChoices(scoutingSectionField.choices, scoutingSectionField.defaultValue) + "</select>";
                 break;
             case "text":
-                htmlFieldFromJson = "<textarea id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "'></textarea>";
+                htmlFieldFromJson = "<textarea id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle'></textarea>";
                 break;
             case "number":
-                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='number' />";
+                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='number' class='fieldStyle'/>";
                 break;
             case "boolean":
-                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='checkbox' role='switch' />";
+                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='checkbox' role='switch' class='fieldStyle'/>";
                 break;
             case "counter":
                 htmlFieldFromJson = "<div class='number'><span class='minus'>-</span><input class='counter' id ='" + scoutingSectionField.code + "' type='text' value='0'/><span class='plus'>+</span></div>";

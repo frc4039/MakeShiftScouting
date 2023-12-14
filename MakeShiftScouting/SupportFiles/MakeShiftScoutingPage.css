@@ -10,11 +10,55 @@
 }
 
 .colWidth {
-	width: fit-content;
+	width: 25%;
+}
+
+.columnContents {
+	margin-bottom: 20px;
+	padding-top: 5px;
+	padding-bottom: 15px;
+	background-color: #E8E8E8;
 }
 
 .sectionHeader {
 	font-weight: bold;
+	padding: 1px
+}
+
+.headerBackground1 {
+	background-color: violet;
+}
+
+.headerBackground2 {
+	background-color: indigo;
+	color: white;
+}
+
+.headerBackground3 {
+	background-color: blue;
+	color: white;
+}
+
+.headerBackground4 {
+	background-color: green;
+	color: white;
+}
+
+.headerBackground5 {
+	background-color: yellow;
+}
+
+.headerBackground6 {
+	background-color: orange;
+}
+
+.headerBackground7 {
+	background-color: red;
+}
+
+.fieldStyle {
+	width: 95%;
+	margin-bottom: 5px;
 }
 
 /*Counter field with -/+ buttons*/
