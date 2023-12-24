@@ -2,21 +2,17 @@
 	text-align: center;
 }
 .GameName {
-	background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+	background-image: linear-gradient(to right, red, orange, yellow, green, blue);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	font-weight: bold;
 	font-family: Broadway;
 }
 
-.colWidth {
-	width: 25%;
-}
-
 .columnContents {
-	margin-bottom: 20px;
-	padding-top: 5px;
-	padding-bottom: 15px;
+	width: 23%;
+	padding: 1%;
+	border: 2px solid white;
 	background-color: #E8E8E8;
 }
 
@@ -26,17 +22,15 @@
 }
 
 .headerBackground1 {
-	background-color: violet;
+	background-color: red;
 }
 
 .headerBackground2 {
-	background-color: indigo;
-	color: white;
+	background-color: orange;
 }
 
 .headerBackground3 {
-	background-color: blue;
-	color: white;
+	background-color: yellow;
 }
 
 .headerBackground4 {
@@ -45,15 +39,15 @@
 }
 
 .headerBackground5 {
-	background-color: yellow;
+	background-color: blue;
+	color: white;
 }
 
-.headerBackground6 {
-	background-color: orange;
-}
-
-.headerBackground7 {
-	background-color: red;
+.fieldTitle {
+	font-weight: bold;
+	text-align: left;
+	margin-top: 4px;
+	font-size: smaller;
 }
 
 .fieldStyle {
@@ -61,9 +55,14 @@
 	margin-bottom: 5px;
 }
 
+.checkboxStyle {
+	width: 25%;
+	height: 25px;
+}
+
 /*Counter field with -/+ buttons*/
-.number{
-	margin:50px;
+.number {
+	margin-bottom: 5px;
 }
 .minus, .plus{
 	cursor:pointer;

@@ -8,13 +8,16 @@ public partial class MainPage : ContentPage
 {
     ScoutingPage scoutingPage = null;
 
-    private string currentAppDirectory = FileSystem.Current.AppDataDirectory;
+    private string currentAppDataDirectory = FileSystem.Current.AppDataDirectory;
 
     private string sourceJsonFile = string.Empty;
     private string makeShiftScoutingJsonFile = string.Empty;
     private string makeShiftScoutingHtmlFile = string.Empty;
     private string makeShiftScoutingStylesFile = string.Empty;
     private string makeShiftScoutingScriptsFile = string.Empty;
+    private string bootstrapCssFile = string.Empty;
+    private string bootstrapJsFile = string.Empty;
+    private string jqueryFile = string.Empty;
 
     public MainPage()
 	{
@@ -28,10 +31,13 @@ public partial class MainPage : ContentPage
 
     private void InitializeVariables()
     {
-        makeShiftScoutingJsonFile = currentAppDirectory + MAKESHIFT_SCOUTING_JSON_FILENAME;
-        makeShiftScoutingHtmlFile = currentAppDirectory + MAKESHIFT_SCOUTING_HTML_FILENAME;
-        makeShiftScoutingStylesFile = currentAppDirectory + MAKESHIFT_SCOUTING_STYLES_FILENAME;
-        makeShiftScoutingScriptsFile = currentAppDirectory + MAKESHIFT_SCOUTING_SCRIPTS_FILENAME;
+        makeShiftScoutingJsonFile = currentAppDataDirectory + MAKESHIFT_SCOUTING_JSON_FILENAME;
+        makeShiftScoutingHtmlFile = currentAppDataDirectory + MAKESHIFT_SCOUTING_HTML_FILENAME;
+        makeShiftScoutingStylesFile = currentAppDataDirectory + MAKESHIFT_SCOUTING_STYLES_FILENAME;
+        makeShiftScoutingScriptsFile = currentAppDataDirectory + MAKESHIFT_SCOUTING_SCRIPTS_FILENAME;
+        bootstrapCssFile = currentAppDataDirectory + BOOTSTRAP_CSS_FILENAME;
+        bootstrapJsFile = currentAppDataDirectory + BOOTSTRAP_JS_FILENAME;
+        jqueryFile = currentAppDataDirectory + JQUERY_FILENAME;
 
         sourceJsonFile = SOURCE_FOLDER + "\\4039 QR Scout Feb 25 v11.json";
     }
@@ -75,6 +81,45 @@ public partial class MainPage : ContentPage
                 File.Copy(sourceScriptsFile, makeShiftScoutingScriptsFile, true);
             }
         }
+
+        string sourceBootstrapCssFile = SOURCE_FOLDER + BOOTSTRAP_CSS_FILENAME;
+        if (!File.Exists(bootstrapCssFile))
+        {
+            File.Copy(sourceBootstrapCssFile, bootstrapCssFile);
+        }
+        else
+        {
+            if (File.GetLastWriteTime(sourceBootstrapCssFile) > File.GetLastWriteTime(bootstrapCssFile))
+            {
+                File.Copy(sourceBootstrapCssFile, bootstrapCssFile, true);
+            }
+        }
+
+        string sourceBootstrapJsFile = SOURCE_FOLDER + BOOTSTRAP_JS_FILENAME;
+        if (!File.Exists(bootstrapJsFile))
+        {
+            File.Copy(sourceBootstrapJsFile, bootstrapJsFile);
+        }
+        else
+        {
+            if (File.GetLastWriteTime(sourceBootstrapJsFile) > File.GetLastWriteTime(bootstrapJsFile))
+            {
+                File.Copy(sourceBootstrapJsFile, bootstrapJsFile, true);
+            }
+        }
+
+        string sourceJQueryFile = SOURCE_FOLDER + JQUERY_FILENAME;
+        if (!File.Exists(jqueryFile))
+        {
+            File.Copy(sourceJQueryFile, jqueryFile);
+        }
+        else
+        {
+            if(File.GetLastWriteTime(sourceJQueryFile) > File.GetLastWriteTime(jqueryFile))
+            {
+                File.Copy(sourceJQueryFile, jqueryFile, true);
+            }
+        }
     }
 
 
@@ -107,30 +152,30 @@ public partial class MainPage : ContentPage
             using (StreamWriter streamWriter = new StreamWriter(makeShiftScoutingHtmlFile))
             {
                 streamWriter.WriteLine("<html><head>");
-                streamWriter.WriteLine(BOOTSTRAP_CSS);
-                streamWriter.WriteLine(BOOTSTRAP_JS);
-                streamWriter.WriteLine(JQUERY);
+                streamWriter.WriteLine(string.Format(BOOTSTRAP_CSS_TAG, BOOTSTRAP_CSS_FILENAME.Replace("\\", "")));
+                streamWriter.WriteLine(string.Format(BOOTSTRAP_JS_TAG, BOOTSTRAP_JS_FILENAME.Replace("\\", "")));
+                streamWriter.WriteLine(string.Format(JQUERY_TAG, JQUERY_FILENAME.Replace("\\", "")));
                 streamWriter.WriteLine(string.Format("<link rel='stylesheet' href='{0}' />", MAKESHIFT_SCOUTING_STYLES_FILENAME.Replace("\\", "")));
                 streamWriter.WriteLine(string.Format("<script src='{0}'></script>", MAKESHIFT_SCOUTING_SCRIPTS_FILENAME.Replace("\\", "")));
                 streamWriter.WriteLine("</head><body>");
                 streamWriter.WriteLine("<h1 class='centered'><span class='GameName'>MakeShift Scouting - {0}</span></h1>", scoutingPage.page_title);
                 streamWriter.WriteLine("<div class='container text-center'>");
-                streamWriter.WriteLine("<div class='row row-cols-auto'>");
+                streamWriter.WriteLine("<div class='row'>");
                 foreach (ScoutingPageSection section in scoutingPage.sections)
                 {
-                    streamWriter.WriteLine("<div class='col colWidth'><div class='columnContents'>");
+                    streamWriter.WriteLine("<div class='columnContents'>");
                     streamWriter.WriteLine(string.Format("<div class='sectionHeader headerBackground{1}'>{0}</div>", section.name.ToUpper(), backgroundCount));
                     backgroundCount++;
-                    if (backgroundCount > 7)
+                    if (backgroundCount > 5)
                     {
                         backgroundCount = 1;
                     }
                     foreach (ScoutingPageSectionField field in section.fields)
                     {
-                        streamWriter.WriteLine(string.Format("<div>{0}</div>", field.title));
+                        streamWriter.WriteLine(string.Format("<div class='fieldTitle'>{0}</div>", field.title));
                         streamWriter.WriteLine(CreateHtmlFieldFromJson(field));
                     }
-                    streamWriter.WriteLine("</div></div>");
+                    streamWriter.WriteLine("</div>");
                 }
                 streamWriter.WriteLine("</div></div>");
                 streamWriter.WriteLine("</body></html>");
@@ -156,19 +201,22 @@ public partial class MainPage : ContentPage
         switch (scoutingSectionField.type)
         {
             case "select":
-                htmlFieldFromJson = "<select id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle'>" + GetChoices(scoutingSectionField.choices, scoutingSectionField.defaultValue) + "</select>";
+                htmlFieldFromJson = "<select id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle rounded-5'>" + GetChoices(scoutingSectionField.choices, scoutingSectionField.defaultValue) + "</select>";
                 break;
             case "text":
-                htmlFieldFromJson = "<textarea id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle'></textarea>";
+                htmlFieldFromJson = "<textarea id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle rounded-4'></textarea>";
                 break;
             case "number":
-                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='number' class='fieldStyle'/>";
+                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='number' class='fieldStyle rounded-5'/>";
                 break;
             case "boolean":
-                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='checkbox' role='switch' class='fieldStyle'/>";
+                htmlFieldFromJson = 
+                    "<div class='form-check' style='margin-left: 10px' >" +
+                        "<input id ='" + scoutingSectionField.code + "' type='checkbox' role='switch' class='form-check-input rounded-5 checkboxStyle'/>" +
+                    "</div><div style='height: 10px'></div>";
                 break;
             case "counter":
-                htmlFieldFromJson = "<div class='number'><span class='minus'>-</span><input class='counter' id ='" + scoutingSectionField.code + "' type='text' value='0'/><span class='plus'>+</span></div>";
+                htmlFieldFromJson = "<div class='number'><span class='minus'>-</span><input class='counter rounded-5' id ='" + scoutingSectionField.code + "' type='text' value='0'/><span class='plus'>+</span></div>";
                 break;
         }
         return htmlFieldFromJson;
