@@ -1,8 +1,13 @@
 .centered {
 	text-align: center;
 }
-.GameName {
-	background-image: linear-gradient(to right, red, orange, yellow, green, blue);
+
+.verticalSpacerBottom {
+	margin-bottom: 25px;
+}
+
+.gameName {
+	background-image: linear-gradient(to right, red, orange, yellow, green, #4287f5);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	font-weight: bold;
@@ -39,7 +44,7 @@
 }
 
 .headerBackground5 {
-	background-color: blue;
+	background-color: #4287f5;
 	color: white;
 }
 
@@ -58,6 +63,23 @@
 .checkboxStyle {
 	width: 25%;
 	height: 25px;
+}
+
+.button {
+	padding: 15px;
+	font-weight: bold;
+	font-family: Broadway;
+	font-size: larger;
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.buttonSubmit {
+	background-image: linear-gradient(to right, red, orange, yellow, green, #4287f5);
+}
+
+.buttonReset {
+	background-color: red;
 }
 
 /*Counter field with -/+ buttons*/
