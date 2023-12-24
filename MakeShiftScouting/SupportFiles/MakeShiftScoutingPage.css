@@ -2,24 +2,67 @@
 	text-align: center;
 }
 .GameName {
-	background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+	background-image: linear-gradient(to right, red, orange, yellow, green, blue);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	font-weight: bold;
 	font-family: Broadway;
 }
 
-.colWidth {
-	width: fit-content;
+.columnContents {
+	width: 23%;
+	padding: 1%;
+	border: 2px solid white;
+	background-color: #E8E8E8;
 }
 
 .sectionHeader {
 	font-weight: bold;
+	padding: 1px
+}
+
+.headerBackground1 {
+	background-color: red;
+}
+
+.headerBackground2 {
+	background-color: orange;
+}
+
+.headerBackground3 {
+	background-color: yellow;
+}
+
+.headerBackground4 {
+	background-color: green;
+	color: white;
+}
+
+.headerBackground5 {
+	background-color: blue;
+	color: white;
+}
+
+.fieldTitle {
+	font-weight: bold;
+	text-align: left;
+	margin-top: 4px;
+	font-size: smaller;
+}
+
+.fieldStyle {
+	width: 95%;
+	margin-bottom: 5px;
+}
+
+.checkboxStyle {
+	width: 25%;
+	height: 25px;
 }
 
 /*Counter field with -/+ buttons*/
-.number{
-	margin:50px;
+.number {
+	margin-bottom: 5px;
 }
 .minus, .plus{
 	cursor:pointer;
