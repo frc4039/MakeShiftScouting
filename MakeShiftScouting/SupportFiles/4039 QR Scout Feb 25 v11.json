@@ -10,7 +10,7 @@
                 {
                     "code": "ev",
                     "title": "Event",
-                    "type": "select",
+                    "type": "persistentList",
                     "choices": {
                         "Georgian": "Georgian",
                         "Western": "Western",
@@ -21,13 +21,13 @@
                 },
                 {
                     "title": "Scouter Name",
-                    "type": "text",
+                    "type": "persistentText",
                     "required": true,
                     "code": "scouter"
                 },
                 {
                     "title": "Match Number",
-                    "type": "number",
+                    "type": "autoNumber",
                     "required": true,
                     "code": "matchNumber"
                 },
@@ -39,7 +39,7 @@
                 },
                 {
                     "title": "Robot",
-                    "type": "select",
+                    "type": "persistentList",
                     "required": true,
                     "code": "robot",
                     "choices": {

@@ -159,7 +159,7 @@ public partial class MainPage : ContentPage
                 streamWriter.WriteLine(string.Format("<script src='{0}'></script>", MAKESHIFT_SCOUTING_SCRIPTS_FILENAME.Replace("\\", "")));
                 streamWriter.WriteLine("</head><body>");
                 streamWriter.WriteLine("<h1 class='centered'><span class='gameName'>MakeShift Scouting - {0}</span></h1>", scoutingPage.page_title);
-                streamWriter.WriteLine("<div class='container text-center'>");
+                streamWriter.WriteLine("<form id='generateQrCode'><div class='container text-center'>");
                 streamWriter.WriteLine("<div class='row'>");
                 foreach (ScoutingPageSection section in scoutingPage.sections)
                 {
@@ -172,16 +172,30 @@ public partial class MainPage : ContentPage
                     }
                     foreach (ScoutingPageSectionField field in section.fields)
                     {
-                        streamWriter.WriteLine(string.Format("<div class='fieldTitle'>{0}</div>", field.title));
+                        streamWriter.WriteLine(string.Format("<div class='fieldTitle'>{0}{1}</div>", field.title, (field.required ? " <span style='color:red'>*</span> " : "")));
                         streamWriter.WriteLine(CreateHtmlFieldFromJson(field));
                     }
                     streamWriter.WriteLine("</div>");
                 }
                 streamWriter.WriteLine("<div class='columnContents'>");
                 streamWriter.WriteLine("<div class='verticalSpacerBottom'><input type='submit' value='Generate QR Code' class='button buttonSubmit rounded-5' /></div>");
-                streamWriter.WriteLine("<input type='button' value='Reset Fields' class='button buttonReset rounded-5' />");
+                streamWriter.WriteLine("<input type='button' value='Reset Fields' class='button buttonReset rounded-5' id='resetFields'/>");
                 streamWriter.WriteLine("</div>");
-                streamWriter.WriteLine("</div></div>");
+                streamWriter.WriteLine("</div></div></form>");
+                //Modal beginning
+                streamWriter.WriteLine("<div class='modal fade' tabindex='-1' role='dialog' id='qrCodeModal'>");
+                streamWriter.WriteLine("<div class='modal-dialog' role='document'><div class='modal-content'>");
+                streamWriter.WriteLine("<div class='modal-header'>");
+                streamWriter.WriteLine("<h4 class='modal-title'><span id='modalTitle'>Scan QR Code</span></h4>");
+                streamWriter.WriteLine("</div>");
+                streamWriter.WriteLine("<div class='modal-body'>");
+                streamWriter.WriteLine("<p>QR Code</p>");
+                streamWriter.WriteLine("</div>");
+                streamWriter.WriteLine("<div class='modal-footer'>");
+                streamWriter.WriteLine("<button type='button' class='button buttonClose rounded-4' data-bs-dismiss='modal'>Close</button>");
+                streamWriter.WriteLine("</div>");
+                streamWriter.WriteLine("</div></div></div>");
+                //Model end
                 streamWriter.WriteLine("</body></html>");
                 streamWriter.Flush();
                 streamWriter.Close();
@@ -205,13 +219,13 @@ public partial class MainPage : ContentPage
         switch (scoutingSectionField.type)
         {
             case "select":
-                htmlFieldFromJson = "<select id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle rounded-5'>" + GetChoices(scoutingSectionField.choices, scoutingSectionField.defaultValue) + "</select>";
+                htmlFieldFromJson = "<select id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle rounded-5 resettingList'" + (scoutingSectionField.required ? " required " : "") + ">" + GetChoices(scoutingSectionField.choices, scoutingSectionField.defaultValue) + "</select>";
                 break;
             case "text":
-                htmlFieldFromJson = "<textarea id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle rounded-4'></textarea>";
+                htmlFieldFromJson = "<textarea id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle rounded-4 resettingText'" + (scoutingSectionField.required ? " required " : "") + "></textarea>";
                 break;
             case "number":
-                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='number' class='fieldStyle rounded-5'/>";
+                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='number' class='fieldStyle rounded-5 plainNumber'" + (scoutingSectionField.required ? " required " : "") + "/>";
                 break;
             case "boolean":
                 htmlFieldFromJson = 
@@ -221,6 +235,15 @@ public partial class MainPage : ContentPage
                 break;
             case "counter":
                 htmlFieldFromJson = "<div class='number'><span class='minus'>-</span><input class='counter rounded-5' id ='" + scoutingSectionField.code + "' type='text' value='0'/><span class='plus'>+</span></div>";
+                break;
+            case "autoNumber":
+                htmlFieldFromJson = "<input id ='" + scoutingSectionField.code + "' type='number' class='fieldStyle rounded-5 autoNumber'" + (scoutingSectionField.required ? " required " : "") + "/>";
+                break;
+            case "persistentText":
+                htmlFieldFromJson = "<textarea id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle rounded-4'" + (scoutingSectionField.required ? " required " : "") + "></textarea>";
+                break;
+            case "persistentList":
+                htmlFieldFromJson = "<select id='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' class='fieldStyle rounded-5'" + (scoutingSectionField.required ? " required " : "") + ">" + GetChoices(scoutingSectionField.choices, scoutingSectionField.defaultValue) + "</select>";
                 break;
         }
         return htmlFieldFromJson;

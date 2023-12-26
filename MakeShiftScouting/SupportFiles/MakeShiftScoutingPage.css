@@ -58,6 +58,7 @@
 .fieldStyle {
 	width: 95%;
 	margin-bottom: 5px;
+	padding-left: 10px;
 }
 
 .checkboxStyle {
@@ -67,8 +68,7 @@
 
 .button {
 	padding: 15px;
-	font-weight: bold;
-	font-family: Broadway;
+	font-family: Cooper;
 	font-size: larger;
 	color: white;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -80,6 +80,11 @@
 
 .buttonReset {
 	background-color: red;
+}
+
+.buttonClose {
+	padding: 7px 10px 7px 10px;
+	background-color: #4287f5;
 }
 
 /*Counter field with -/+ buttons*/
