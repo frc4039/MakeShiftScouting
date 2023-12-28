@@ -14,26 +14,26 @@ The following field types- "type" element in the JSon file- are valid and behave
 
 <b>For lists that are required but have a default value that has no selection meaning, the value should be a blank "". See example below:</b>
 <blockquote>
-            "name": "Postmatch",
-            "fields": [
-                {
-                    "code": "ds",
-                    "title": "Driver Skill Rating from 1 (poor) to 10 (incredible)",
-                    "type": "select",
-                    "choices": {
-                        "": "-",
-                        "1": "1",
-                        "2": "2",
-                        "3": "3",
-                        "4": "4",
-                        "5": "5",
-                        "6": "6",
-                        "7": "7",
-                        "8": "8",
-                        "9": "9",
-                        "10": "10"
-                    },
-                    "defaultValue": "",
-                    "required": true
-                },
+            "name": "Postmatch",</br>
+            "fields": [</br>
+                {</br>
+                    "code": "ds",</br>
+                    "title": "Driver Skill Rating from 1 (poor) to 10 (incredible)",</br>
+                    "type": "select",</br>
+                    "choices": {</br>
+                        "": "-",</br>
+                        "1": "1",</br>
+                        "2": "2",</br>
+                        "3": "3",</br>
+                        "4": "4",</br>
+                        "5": "5",</br>
+                        "6": "6",</br>
+                        "7": "7",</br>
+                        "8": "8",</br>
+                        "9": "9",</br>
+                        "10": "10"</br>
+                    },</br>
+                    "defaultValue": "",</br>
+                    "required": true</br>
+                },</br>
 </blockquote>
