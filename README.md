@@ -21,7 +21,7 @@ The following field types- "type" element in the JSon file- are valid and behave
                     "title": "Driver Skill Rating from 1 (poor) to 10 (incredible)",</br>
                     "type": "select",</br>
                     "choices": {</br>
-                        "": "-",</br>
+                      <b>"": "-",</b></br>
                         "1": "1",</br>
                         "2": "2",</br>
                         "3": "3",</br>
@@ -33,7 +33,7 @@ The following field types- "type" element in the JSon file- are valid and behave
                         "9": "9",</br>
                         "10": "10"</br>
                     },</br>
-                    "defaultValue": "",</br>
+                 <b>"defaultValue": "",</b></br>
                     "required": true</br>
                 },</br>
 </blockquote>
