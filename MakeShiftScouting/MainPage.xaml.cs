@@ -253,9 +253,13 @@ public partial class MainPage : ContentPage
     {
         string choices1 = string.Empty;
         if (!choices.ContainsKey(defaultValue))
+        {
             choices1 = "<option value='' selected disabled>Select option</option>";
+        }
         foreach (KeyValuePair<string, string> choice in choices)
+        {
             choices1 += string.Format("<option value='{0}' {1}>{2}</option>", choice.Key, choice.Key.Equals(defaultValue) ? "selected" : "", choice.Value);
+        }
         return choices1;
     }
 }
