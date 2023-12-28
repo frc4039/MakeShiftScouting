@@ -13,7 +13,7 @@ The following field types- "type" element in the JSon file- are valid and behave
 </ol>
 
 <b>For lists that are required but have a default value that has no selection meaning, the value should be a blank "". See example below:</b>
-<quote>
+<blockquote>
             "name": "Postmatch",
             "fields": [
                 {
@@ -36,4 +36,4 @@ The following field types- "type" element in the JSon file- are valid and behave
                     "defaultValue": "",
                     "required": true
                 },
-</quote>
+</blockquote>
