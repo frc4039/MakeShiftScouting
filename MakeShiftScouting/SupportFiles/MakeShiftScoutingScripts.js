@@ -16,7 +16,22 @@ $(document).ready(function() {
 			return false;
 		});
 
-	$('#generateQrCode').on('submit', function (e) {
+	$('#scoutingForm').on('submit', function (e) {
+		//gather the form data into a tab separated string
+		const form = $('#scoutingForm')[0];
+		const submitter = $('#generateQrCode')[0];
+		const formData = new FormData(form, submitter);
+		let output = "";
+		for (const [key, value] of formData) {
+			output += `${value}\t`;
+		}
+
+		//generate QR Code from data
+		const qrCodeDiv = $('#qrcode')[0];
+		qrCodeDiv.innerHTML = "";
+		new QRCode(qrCodeDiv, output);
+
+		//Open popup with QR Code
 		$('#qrCodeModal').modal('show');
 		$('#modalTitle').text($('#robot').val() + " - " + $('#teamNumber').val());
 		e.preventDefault();
