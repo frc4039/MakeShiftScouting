@@ -10,7 +10,7 @@
                 {
                     "code": "ev",
                     "title": "Event",
-                    "type": "select",
+                    "type": "persistentList",
                     "choices": {
                         "Georgian": "Georgian",
                         "Western": "Western",
@@ -21,13 +21,13 @@
                 },
                 {
                     "title": "Scouter Name",
-                    "type": "text",
+                    "type": "persistentText",
                     "required": true,
                     "code": "scouter"
                 },
                 {
                     "title": "Match Number",
-                    "type": "number",
+                    "type": "autoNumber",
                     "required": true,
                     "code": "matchNumber"
                 },
@@ -39,7 +39,7 @@
                 },
                 {
                     "title": "Robot",
-                    "type": "select",
+                    "type": "persistentList",
                     "required": true,
                     "code": "robot",
                     "choices": {
@@ -254,7 +254,7 @@
                     "title": "Driver Skill Rating from 1 (poor) to 10 (incredible)",
                     "type": "select",
                     "choices": {
-                        "x": "-",
+                        "": "-",
                         "1": "1",
                         "2": "2",
                         "3": "3",
@@ -266,7 +266,7 @@
                         "9": "9",
                         "10": "10"
                     },
-                    "defaultValue": "x",
+                    "defaultValue": "",
                     "required": true
                 },
                 {
