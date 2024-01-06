@@ -30,6 +30,14 @@ public partial class MainPage : ContentPage
         RenderPageDefinition();
 	}
 
+    protected override async void OnAppearing()
+    {
+        Permissions.StorageRead readPermision = new Permissions.StorageRead();
+        PermissionStatus resultReadRequest = await readPermision.RequestAsync();
+        Permissions.StorageWrite writePermision = new Permissions.StorageWrite();
+        PermissionStatus resultWriteRequest = await writePermision.RequestAsync();
+    }
+
     private void InitializeVariables()
     {
         makeShiftScoutingJsonFile = currentAppDataDirectory + MAKESHIFT_SCOUTING_JSON_FILENAME;
