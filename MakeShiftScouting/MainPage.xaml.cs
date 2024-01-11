@@ -8,7 +8,7 @@ public partial class MainPage : ContentPage
 {
     ScoutingPage scoutingPage = null;
 
-    private string currentAppDataDirectory = FileSystem.Current.AppDataDirectory + FOLDER_SEPARATOR;
+    private string currentAppDataDirectory = FileSystem.Current.AppDataDirectory + FOLDER_SEPARATOR; //Android needed?
 
     private string sourceJsonFile = string.Empty;
     private string makeShiftScoutingJsonFile = string.Empty;
