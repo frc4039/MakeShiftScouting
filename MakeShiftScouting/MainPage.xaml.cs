@@ -30,13 +30,13 @@ public partial class MainPage : ContentPage
         RenderPageDefinition();
 	}
 
-    protected override async void OnAppearing()
-    {
-        Permissions.StorageRead readPermision = new Permissions.StorageRead();
-        PermissionStatus resultReadRequest = await readPermision.RequestAsync();
-        Permissions.StorageWrite writePermision = new Permissions.StorageWrite();
-        PermissionStatus resultWriteRequest = await writePermision.RequestAsync();
-    }
+    //protected override async void OnAppearing()
+    //{
+    //    Permissions.StorageRead readPermision = new Permissions.StorageRead();
+    //    PermissionStatus resultReadRequest = await readPermision.RequestAsync();
+    //    Permissions.StorageWrite writePermision = new Permissions.StorageWrite();
+    //    PermissionStatus resultWriteRequest = await writePermision.RequestAsync();
+    //}
 
     private void InitializeVariables()
     {
@@ -49,7 +49,7 @@ public partial class MainPage : ContentPage
         jqueryFile = currentAppDataDirectory + JQUERY_FILENAME;
         qrcodejsFile = currentAppDataDirectory + QR_CODE_JS_FILENAME;
 
-        sourceJsonFile = SOURCE_FOLDER + "\\4039 QR Scout Feb 25 v11.json";
+        sourceJsonFile = SOURCE_FOLDER + "4039 QR Scout Feb 25 v11.json";
     }
 
     private void UpdateSupportFiles()
