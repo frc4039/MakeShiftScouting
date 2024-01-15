@@ -18,6 +18,12 @@
 	font-family: Broadway;
 }
 
+.versioning {
+	margin-top: 30px;
+	color: slategrey;
+	font-weight: bold;
+}
+
 .columnContents {
 	width: 23%;
 	padding: 1%;

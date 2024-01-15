@@ -8,7 +8,7 @@ public partial class MainPage : ContentPage
 {
     ScoutingPage scoutingPage = null;
 
-    private string currentAppDataDirectory = FileSystem.Current.AppDataDirectory + FOLDER_SEPARATOR; //Android needed?
+    private string currentAppDataDirectory = FileSystem.Current.AppDataDirectory + FOLDER_SEPARATOR;
 
     private string sourceJsonFile = string.Empty;
     private string makeShiftScoutingJsonFile = string.Empty;
@@ -30,13 +30,6 @@ public partial class MainPage : ContentPage
         RenderPageDefinition();
 	}
 
-    //protected override async void OnAppearing()
-    //{
-    //    Permissions.StorageRead readPermision = new Permissions.StorageRead();
-    //    PermissionStatus resultReadRequest = await readPermision.RequestAsync();
-    //    Permissions.StorageWrite writePermision = new Permissions.StorageWrite();
-    //    PermissionStatus resultWriteRequest = await writePermision.RequestAsync();
-    //}
 
     private void InitializeVariables()
     {
@@ -204,8 +197,8 @@ public partial class MainPage : ContentPage
                 streamWriter.WriteLine("<div class='columnContents'>");
                 streamWriter.WriteLine("<div class='verticalSpacerBottom'><input type='submit' id='generateQrCode' value='Generate QR Code' class='button buttonSubmit rounded-5' /></div>");
                 streamWriter.WriteLine("<input type='button' value='Reset Fields' class='button buttonReset rounded-5' id='resetFields'/>");
-                streamWriter.WriteLine(string.Format("<div class='italics'>{0}</div>", scoutingPage.date_created));
-                streamWriter.WriteLine(string.Format("<div class='italics'>{0}</div>", scoutingPage.version));
+                streamWriter.WriteLine(string.Format("<div class='versioning italics'>{0}<br/>", scoutingPage.date_created));
+                streamWriter.WriteLine(string.Format("{0}</div>", scoutingPage.version));
                 streamWriter.WriteLine("</div>");
                 streamWriter.WriteLine("</div></div></form>");
                 //Modal beginning

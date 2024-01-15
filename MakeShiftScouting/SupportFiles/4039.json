@@ -2,8 +2,8 @@
     "$schema": "../schema.json",
     "title": "QRScout",
     "page_title": "Crescendo",
-    "date_created": "Feb 11",
-    "version":  "v.1.2",
+    "date_created": "February 11, 2024",
+    "version":  "v.1.0.0",
     "sections": [
         {
             "name": "Prematch",
