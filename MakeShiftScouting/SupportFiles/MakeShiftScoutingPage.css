@@ -6,6 +6,10 @@
 	margin-bottom: 25px;
 }
 
+.italics {
+	font-style: italic;
+}
+ 
 .gameName {
 	background-image: linear-gradient(to right, red, orange, yellow, green, #4287f5);
 	-webkit-background-clip: text;

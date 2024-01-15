@@ -49,7 +49,7 @@ public partial class MainPage : ContentPage
         jqueryFile = currentAppDataDirectory + JQUERY_FILENAME;
         qrcodejsFile = currentAppDataDirectory + QR_CODE_JS_FILENAME;
 
-        sourceJsonFile = SOURCE_FOLDER + "4039 QR Scout Feb 25 v11.json";
+        sourceJsonFile = SOURCE_FOLDER + "4039.json";
     }
 
     private void UpdateSupportFiles()
@@ -204,6 +204,8 @@ public partial class MainPage : ContentPage
                 streamWriter.WriteLine("<div class='columnContents'>");
                 streamWriter.WriteLine("<div class='verticalSpacerBottom'><input type='submit' id='generateQrCode' value='Generate QR Code' class='button buttonSubmit rounded-5' /></div>");
                 streamWriter.WriteLine("<input type='button' value='Reset Fields' class='button buttonReset rounded-5' id='resetFields'/>");
+                streamWriter.WriteLine(string.Format("<div class='italics'>{0}</div>", scoutingPage.date_created));
+                streamWriter.WriteLine(string.Format("<div class='italics'>{0}</div>", scoutingPage.version));
                 streamWriter.WriteLine("</div>");
                 streamWriter.WriteLine("</div></div></form>");
                 //Modal beginning
