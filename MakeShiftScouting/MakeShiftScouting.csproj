@@ -95,8 +95,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiCss Update="SupportFiles\bootstrap.min.css">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiCss>
 	  <MauiCss Update="SupportFiles\MakeShiftScoutingPage.css">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </MauiCss>
 	</ItemGroup>
 
