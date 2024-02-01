@@ -88,7 +88,7 @@
                 },
                 {
                     "code": "auc",
-                    "title": "Cone/Cube(s) Scored Top Row",
+                    "title": "Note(s) Scored Speaker",
                     "type": "counter",
                     "defaultValue": 0,
                     "min": 0,
@@ -219,7 +219,7 @@
             "fields": [
                 {
                     "code": "be",
-                    "title": "parked in the community zone",
+                    "title": "parked at the stage",
                     "type": "boolean",
                     "defaultValue": false,
                     "required": false
