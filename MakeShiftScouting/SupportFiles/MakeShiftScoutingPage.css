@@ -117,6 +117,7 @@ background-color: #212121}
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
+	font-size: 14px;
 }
 .counter{
 	width: 100px;
