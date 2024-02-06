@@ -15,11 +15,11 @@
         public const string JQUERY_FILENAME = "jquery-3.7.1.min.js";
         public const string QR_CODE_JS_FILENAME = "qrcode.js";
 
-        public const string SOURCE_FOLDER = "/storage/emulated/0/Download/Scouting/"; //Android
+        //public const string SOURCE_FOLDER = "/storage/emulated/0/Download/Scouting/"; //Android
         //public const string SOURCE_FOLDER = "D:\\Programming\\MakeShift\\Scouting Apps\\MakeShiftScouting\\MakeShiftScouting\\SupportFiles\\"; //Windows
-        //public const string SOURCE_FOLDER = "P:\\Files Backup\\Projects disk E\\MacP\\MakeShift\\Scouting Apps\\MakeShiftScouting\\MakeShiftScouting\\SupportFiles\\"; //Windows
+        public const string SOURCE_FOLDER = "P:\\Files Backup\\Projects disk E\\MacP\\MakeShift\\Scouting Apps\\MakeShiftScouting\\MakeShiftScouting\\SupportFiles\\"; //Windows
 
-        public const string FOLDER_SEPARATOR = "/"; //Android
-        //public const string FOLDER_SEPARATOR = "\\"; //Windows
+        //public const string FOLDER_SEPARATOR = "/"; //Android
+        public const string FOLDER_SEPARATOR = "\\"; //Windows
     }
 }
