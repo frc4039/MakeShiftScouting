@@ -267,7 +267,7 @@ public partial class MainPage : ContentPage
                 break;
             case "boolean":
                 htmlFieldFromJson = 
-                    "<div class='form-check' style='margin-left: 10px' >" +
+                    "<div>" +
                         "<input id ='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' type='hidden' value = 'false' />" +
                         "<input type='checkbox' role='switch' class='form-check-input rounded-5 checkboxStyle' onclick = '$(\"#" + scoutingSectionField.code + "\").val(this.checked)' />" +
                     "</div><div style='height: 10px'></div>";
