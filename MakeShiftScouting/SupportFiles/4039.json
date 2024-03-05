@@ -2,8 +2,8 @@
     "$schema": "../schema.json",
     "title": "QRScout",
     "page_title": "Crescendo",
-    "date_created": "January 23rd, 2024",
-    "version":  "v.1.1.0",
+    "date_created": "March 3rd, 2024",
+    "version":  "v.1.2.0",
     "sections": [
         {
             "name": "Prematch",
@@ -17,8 +17,8 @@
                         "Newmarket": "Newmarket",
                         "North Bay": "North Bay",
                         "DCMP": "DCMP",
-						"Worlds": "Worlds"
-                    },
+						            "Worlds": "Worlds"
+                                },
                     "defaultValue": "n",
                     "required": true
                 },
@@ -260,12 +260,12 @@
                     "type": "select",
                     "choices": {
                         "": "-",
-                        "1": "1",
+                        "1": "1: Best",
                         "2": "2",
                         "3": "3",
                         "4": "4",
                         "5": "5",
-                        "6": "6"
+                        "6": "6: Worst"
                     },
                     "defaultValue": "",
                     "required": true
@@ -274,14 +274,14 @@
                     "code": "dr",
                     "title": "Defense Rating from 1 (incredible) to 5 (poor)",
                     "type": "select",
-                    "choices": {
-                        "x": "Did not defend",
-                        "1": "1",
-                        "2": "2",
-                        "3": "3",
-                        "4": "4",
-                        "5": "5"
-                    },
+                  "choices": {
+                    "x": "Did not defend",
+                    "1": "1: Incredible",
+                    "2": "2: Good",
+                    "3": "3: Average",
+                    "4": "4: Ok",
+                    "5": "5: Poor"
+                  },
                     "defaultValue": "x",
                     "required": false
                 }
