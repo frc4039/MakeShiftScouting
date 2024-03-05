@@ -91,11 +91,12 @@ background-color: #212121}
 
 .buttonSubmit {
 	background-image: linear-gradient(to right, red, orange, yellow, green, #4287f5);
+	margin-top: 160px;
 }
 
 .buttonReset {
 	background-color: red;
-	margin-top: 30px;
+	margin-top: 180px;
 }
 
 .buttonClose {
@@ -111,15 +112,15 @@ background-color: #212121}
 	cursor:pointer;
 	width:30px;
 	height:30px;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 33px;
+	margin-right: 33px;
 	background:#BDBDBD;
 	border-radius:4px;
 	border:1px solid #ddd;
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: bold;
 }
 .counter{
