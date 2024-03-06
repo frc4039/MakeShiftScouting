@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using AndroidX.Core.View;
 using MauiBlazor3.Platform.Android;
 
 namespace MakeShiftScouting
@@ -12,6 +13,7 @@ namespace MakeShiftScouting
         {
             base.OnCreate(savedInstanceState);
             WebViewSoftInputPatch.Initialize();
+            RequestedOrientation = ScreenOrientation.Landscape;
         }
     }
 }
