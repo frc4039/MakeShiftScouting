@@ -29,6 +29,8 @@ $(document).ready(function() {
 		//sanitize the output for CR's
 		output = output.replace(/(\r\n|\n|\r)/gm, " - ");
 
+		$('#savedData').val(output);
+
 		//generate QR Code from data
 		const qrCodeDiv = $('#qrcode')[0];
 		qrCodeDiv.innerHTML = "";
@@ -50,5 +52,18 @@ $(document).ready(function() {
 			if (isNaN($(this).val()) || $(this).val() == '') { $(this).val(0); }
 			$(this).val(parseInt($(this).val()) + 1);
 		});
+	});
+
+	$('#reloadFields').on('click', function () {
+		const form = $('#scoutingForm')[0];
+		const reload = $('#savedData').val().split('\t');
+		const submitter = $('#generateQrCode')[0];
+		const formData = new FormData(form, submitter);
+		iCount = 0;
+		for (const [key, value] of formData) {
+			//alert(key + ' - ' + reload[iCount]);
+			$('#' + key).val(reload[iCount]);
+			iCount++;
+		}
 	});
 });

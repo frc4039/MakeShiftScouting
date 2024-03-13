@@ -195,6 +195,7 @@ public partial class MainPage : ContentPage
                 streamWriter.WriteLine(string.Format("<script src='{0}'></script>", MAKESHIFT_SCOUTING_SCRIPTS_FILENAME.Replace("\\", "")));
                 streamWriter.WriteLine("</head><body>");
                 streamWriter.WriteLine("<h1 class='centered'><span class='gameName'>MakeShift Scouting - {0}</span></h1>", scoutingPage.page_title);
+                streamWriter.WriteLine("<input type='hidden' id='savedData'/>");
                 streamWriter.WriteLine("<form id='scoutingForm'><div class='container text-center'>");
                 streamWriter.WriteLine("<div class='row'>");
                 foreach (ScoutingPageSection section in scoutingPage.sections)
@@ -216,6 +217,7 @@ public partial class MainPage : ContentPage
                 streamWriter.WriteLine("<div class='columnContents'>");
                 streamWriter.WriteLine("<div class='verticalSpacerBottom'><input type='submit' id='generateQrCode' value='Generate QR Code' class='button buttonSubmit rounded-5' /></div>");
                 streamWriter.WriteLine("<input type='button' value='Reset Fields' class='button buttonReset rounded-5' id='resetFields'/>");
+                streamWriter.WriteLine("<input type='button' value='Reload Fields' class='button rounded-5' id='reloadFields'/>");
                 streamWriter.WriteLine(string.Format("<div class='versioning italics'>{0}<br/>", scoutingPage.date_created));
                 streamWriter.WriteLine(string.Format("{0}</div>", scoutingPage.version));
                 streamWriter.WriteLine("</div>");
