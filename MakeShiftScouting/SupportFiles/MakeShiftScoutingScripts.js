@@ -26,6 +26,9 @@ $(document).ready(function() {
 			output += `${value}\t`;
 		}
 
+		//sanitize the output for CR's
+		output = output.replace(/(\r\n|\n|\r)/gm, " - ");
+
 		//generate QR Code from data
 		const qrCodeDiv = $('#qrcode')[0];
 		qrCodeDiv.innerHTML = "";
