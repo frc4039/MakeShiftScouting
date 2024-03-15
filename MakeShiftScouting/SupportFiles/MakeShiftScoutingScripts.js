@@ -61,8 +61,12 @@ $(document).ready(function() {
 		const formData = new FormData(form, submitter);
 		iCount = 0;
 		for (const [key, value] of formData) {
-			//alert(key + ' - ' + reload[iCount]);
-			$('#' + key).val(reload[iCount]);
+			if (reload[iCount] == 'true') {
+				//$('#' + key).nextSibling.prop("checked", true);
+			}
+			else {
+				$('#' + key).val(reload[iCount]);
+			}
 			iCount++;
 		}
 	});
