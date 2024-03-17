@@ -20,13 +20,18 @@ public partial class MainPage : ContentPage
     private string jqueryFile = string.Empty;
     private string qrcodejsFile = string.Empty;
 
+    private bool pageRenderUpdateNeeded = false;
+
     public MainPage()
 	{
 		InitializeComponent();
         InitializeVariables();
         UpdateSupportFiles();
-        LoadPageDefinition();
-        ParsePageObjectIntoHtml();
+        if(pageRenderUpdateNeeded)
+        {
+            LoadPageDefinition();
+            ParsePageObjectIntoHtml();
+        }
         RenderPageDefinition();
 	}
 
@@ -50,12 +55,14 @@ public partial class MainPage : ContentPage
         if(!File.Exists(makeShiftScoutingJsonFile))
         {
             File.Copy(sourceJsonFile, makeShiftScoutingJsonFile);
+            pageRenderUpdateNeeded = true;
         }
         else
         {
             if(File.GetLastWriteTime(sourceJsonFile) > File.GetLastWriteTime(makeShiftScoutingJsonFile))
             {
                 File.Copy(sourceJsonFile, makeShiftScoutingJsonFile, true);
+                pageRenderUpdateNeeded = true;
             }
         }
 
@@ -63,12 +70,14 @@ public partial class MainPage : ContentPage
         if (!File.Exists(makeShiftScoutingStylesFile))
         {
             File.Copy(sourceStylesFile, makeShiftScoutingStylesFile);
+            pageRenderUpdateNeeded = true;
         }
         else
         {
             if (File.GetLastWriteTime(sourceStylesFile) > File.GetLastWriteTime(makeShiftScoutingStylesFile))
             {
                 File.Copy(sourceStylesFile, makeShiftScoutingStylesFile, true);
+                pageRenderUpdateNeeded = true;
             }
         }
 
@@ -76,12 +85,14 @@ public partial class MainPage : ContentPage
         if (!File.Exists(makeShiftScoutingScriptsFile))
         {
             File.Copy(sourceScriptsFile, makeShiftScoutingScriptsFile);
+            pageRenderUpdateNeeded = true;
         }
         else
         {
             if (File.GetLastWriteTime(sourceScriptsFile) > File.GetLastWriteTime(makeShiftScoutingScriptsFile))
             {
                 File.Copy(sourceScriptsFile, makeShiftScoutingScriptsFile, true);
+                pageRenderUpdateNeeded = true;
             }
         }
 
@@ -89,12 +100,14 @@ public partial class MainPage : ContentPage
         if (!File.Exists(bootstrapCssFile))
         {
             File.Copy(sourceBootstrapCssFile, bootstrapCssFile);
+            pageRenderUpdateNeeded = true;
         }
         else
         {
             if (File.GetLastWriteTime(sourceBootstrapCssFile) > File.GetLastWriteTime(bootstrapCssFile))
             {
                 File.Copy(sourceBootstrapCssFile, bootstrapCssFile, true);
+                pageRenderUpdateNeeded = true;
             }
         }
 
@@ -102,12 +115,14 @@ public partial class MainPage : ContentPage
         if (!File.Exists(bootstrapJsFile))
         {
             File.Copy(sourceBootstrapJsFile, bootstrapJsFile);
+            pageRenderUpdateNeeded = true;
         }
         else
         {
             if (File.GetLastWriteTime(sourceBootstrapJsFile) > File.GetLastWriteTime(bootstrapJsFile))
             {
                 File.Copy(sourceBootstrapJsFile, bootstrapJsFile, true);
+                pageRenderUpdateNeeded = true;
             }
         }
 
@@ -115,12 +130,14 @@ public partial class MainPage : ContentPage
         if (!File.Exists(jqueryFile))
         {
             File.Copy(sourceJQueryFile, jqueryFile);
+            pageRenderUpdateNeeded = true;
         }
         else
         {
             if(File.GetLastWriteTime(sourceJQueryFile) > File.GetLastWriteTime(jqueryFile))
             {
                 File.Copy(sourceJQueryFile, jqueryFile, true);
+                pageRenderUpdateNeeded = true;
             }
         }
 
@@ -128,12 +145,14 @@ public partial class MainPage : ContentPage
         if (!File.Exists(qrcodejsFile))
         {
             File.Copy(sourceQRCodeJsFile, qrcodejsFile);
+            pageRenderUpdateNeeded = true;
         }
         else
         {
             if (File.GetLastWriteTime(sourceQRCodeJsFile) > File.GetLastWriteTime(qrcodejsFile))
             {
                 File.Copy(sourceQRCodeJsFile, qrcodejsFile, true);
+                pageRenderUpdateNeeded = true;
             }
         }
     }
@@ -248,7 +267,7 @@ public partial class MainPage : ContentPage
                 break;
             case "boolean":
                 htmlFieldFromJson = 
-                    "<div class='form-check' style='margin-left: 10px' >" +
+                    "<div>" +
                         "<input id ='" + scoutingSectionField.code + "' name='" + scoutingSectionField.code + "' type='hidden' value = 'false' />" +
                         "<input type='checkbox' role='switch' class='form-check-input rounded-5 checkboxStyle' onclick = '$(\"#" + scoutingSectionField.code + "\").val(this.checked)' />" +
                     "</div><div style='height: 10px'></div>";

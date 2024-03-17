@@ -2,24 +2,25 @@
     "$schema": "../schema.json",
     "title": "QRScout",
     "page_title": "Crescendo",
-    "date_created": "February 11, 2024",
-    "version":  "v.1.0.0",
+    "date_created": "March 3rd, 2024",
+    "version":  "v.1.2.0",
     "sections": [
         {
             "name": "Prematch",
             "preserveDataOnReset": true,
             "fields": [
                 {
-                    "code": "ev",
+                    "code": "event",
                     "title": "Event",
                     "type": "persistentList",
                     "choices": {
-                        "Georgian": "Georgian",
-                        "Western": "Western",
-                        "DCMP": "DCMP"
-                    },
+                        "Newmarket": "Newmarket",
+                        "North Bay": "North Bay",
+                        "DCMP": "DCMP",
+						            "Worlds": "Worlds"
+                                },
                     "defaultValue": "n",
-                    "required": false
+                    "required": true
                 },
                 {
                     "title": "Scouter Name",
@@ -71,106 +72,56 @@
                     "type": "select",
                     "choices": {
                         "x": "-",
-                        "loading": "Loading Station Side",
+                        "amp": "AMP Side",
                         "middle": "Middle",
-                        "guardrail": "Guardrail Side"
+                        "source": "SOURCE Side"
                     },
                     "defaultValue": "x",
                     "required": false,
                     "code": "autoStart"
                 },
                 {
-                    "code": "am",
-                    "title": "Drove out of Community (Mobility)?",
+                    "code": "subwoofer",
+                    "title": "Started against the SUBWOOFER",
                     "type": "boolean",
                     "defaultValue": false,
                     "required": false
                 },
                 {
-                    "code": "auc",
-                    "title": "Cone/Cube(s) Scored Top Row",
+                    "code": "aua",
+                    "title": "Note(s) scored in AMP",
                     "type": "counter",
                     "defaultValue": 0,
                     "min": 0,
                     "required": false
                 },
                 {
-                    "code": "aucmi",
-                    "title": "Cone/Cube(s) Scored Middle Row",
+                    "code": "aus",
+                    "title": "Note(s) scored in SPEAKER",
                     "type": "counter",
                     "defaultValue": 0,
                     "min": 0,
                     "required": false
                 },
                 {
-                    "code": "amc",
-                    "title": "Cone/Cube(s) Scored Bottom/Hybrid Row",
+                    "code": "aum",
+                    "title": "Note(s) missed",
                     "type": "counter",
                     "defaultValue": 0,
                     "min": 0,
                     "required": false
                 },
                 {
-                    "code": "amcm",
-                    "title": "Cone/Cube(s) Missed",
+                    "code": "aushuttle",
+                    "title": "Note(s) shot/shuttled into own wing",
                     "type": "counter",
                     "defaultValue": 0,
                     "min": 0,
                     "required": false
                 },
-                {
-                    "code": "csau",
-                    "title": "Charging Station",
-                    "type": "select",
-                    "choices": {
-                        "0": "Not Attempted",
-                        "8": "Docked (Unlevel)",
-                        "12": "Engaged (Level)",
-                        "-1": "Unsuccessful Attempt"
-                    },
-                    "defaultValue": "0",
-                    "required": false
-                }
-            ]
-        },
-        {
-            "name": "Tele",
-            "fields": [
-                {
-                    "code": "tu",
-                    "title": "Cones Scored top row",
-                    "type": "counter",
-                    "defaultValue": 0,
-                    "min": 0,
-                    "required": false
-                },
-                {
-                    "code": "tm",
-                    "title": "Cones Scored middle row",
-                    "type": "counter",
-                    "defaultValue": 0,
-                    "min": 0,
-                    "required": false
-                },
-                {
-                    "code": "tl",
-                    "title": "Cones Scored Low/hybrid row",
-                    "type": "counter",
-                    "defaultValue": 0,
-                    "min": 0,
-                    "required": false
-                },
-                {
-                    "code": "conem",
-                    "title": "Cone(s) Missed",
-                    "type": "counter",
-                    "defaultValue": 0,
-                    "min": 0,
-                    "required": false
-                },
-                {
-                    "code": "wd",
-                    "title": "Was Defended",
+               {
+                    "code": "leave",
+                    "title": "Drove out of Robot Starting Zone (Leave)?",
                     "type": "boolean",
                     "defaultValue": false,
                     "required": false
@@ -178,38 +129,53 @@
             ]
         },
         {
-            "name": "Operated",
+            "name": "Tele-Operated",
             "fields": [
                 {
-                    "code": "tt",
-                    "title": "Cubes Scored top row",
+                    "code": "ta",
+                    "title": "Note(s) scored in AMP",
                     "type": "counter",
                     "defaultValue": 0,
                     "min": 0,
                     "required": false
                 },
                 {
-                    "code": "tf",
-                    "title": "Cubes Scored middle row",
+                    "code": "tma",
+                    "title": "AMP note(s) missed",
                     "type": "counter",
                     "defaultValue": 0,
                     "min": 0,
                     "required": false
                 },
                 {
-                    "code": "th",
-                    "title": "Cubes Scored Low/hybrid row",
+                    "code": "ts",
+                    "title": "Note(s) scored in SPEAKER",
                     "type": "counter",
                     "defaultValue": 0,
                     "min": 0,
                     "required": false
                 },
                 {
-                    "code": "cubem",
-                    "title": "Cube(s) Missed",
+                    "code": "tsm",
+                    "title": "SPEAKER Note(s) Missed",
                     "type": "counter",
                     "defaultValue": 0,
                     "min": 0,
+                    "required": false
+                },
+				{
+                    "code": "tshuttle",
+                    "title": "Note(s) shot/shuttled into own wing",
+                    "type": "counter",
+                    "defaultValue": 0,
+                    "min": 0,
+                    "required": false
+                },
+                {
+                    "code": "wdefended",
+                    "title": "Robot was defended",
+                    "type": "boolean",
+                    "defaultValue": false,
                     "required": false
                 }
             ]
@@ -218,32 +184,40 @@
             "name": "Endgame",
             "fields": [
                 {
-                    "code": "be",
-                    "title": "parked in the community zone",
+                    "code": "eclimb",
+                    "title": "ONSTAGE Climb",
+                    "type": "select",
+                    "choices": {
+                        "0": "Not Attempted",
+						"-1": "Unsuccessful Attempt",
+                        "3": "ONSTAGE alone",
+                        "5": "ONSTAGE with 1 other robot",
+                        "7": "ONSTAGE with 2 other robots"
+                    },
+                    "defaultValue": "0",
+                    "required": false
+                },
+				{
+                    "code": "etrapnotes",
+                    "title": "Note(s) scored in TRAPS",
+                    "type": "counter",
+                    "min": 0,
+                    "max": 3,
+                    "defaultValue": 0,
+                    "required": false
+                },
+				{
+                    "code": "epark",
+                    "title": "Parked in the STAGE zone",
                     "type": "boolean",
                     "defaultValue": false,
                     "required": false
                 },
                 {
-                    "code": "c",
-                    "title": "Charging Station",
-                    "type": "select",
-                    "choices": {
-                        "0": "Not Attempted",
-                        "6": "Docked (Unlevel)",
-                        "10": "Engaged (Level)",
-                        "-1": "Unsuccessful Attempt"
-                    },
-                    "defaultValue": "0",
-                    "required": false
-                },
-                {
-                    "code": "cn",
-                    "title": "# of alliance robots on charging station",
-                    "type": "counter",
-                    "min": 0,
-                    "max": 3,
-                    "defaultValue": 0,
+                    "code": "ehighnote",
+                    "title": "HIGH note scored on a MICROPHONE (by alliance's Human Player)",
+                    "type": "boolean",
+                    "defaultValue": false,
                     "required": false
                 }
             ]
@@ -252,62 +226,22 @@
             "name": "Postmatch",
             "fields": [
                 {
-                    "code": "ds",
-                    "title": "Driver Skill Rating from 1 (poor) to 10 (incredible)",
-                    "type": "select",
-                    "choices": {
-                        "": "-",
-                        "1": "1",
-                        "2": "2",
-                        "3": "3",
-                        "4": "4",
-                        "5": "5",
-                        "6": "6",
-                        "7": "7",
-                        "8": "8",
-                        "9": "9",
-                        "10": "10"
-                    },
-                    "defaultValue": "",
-                    "required": true
-                },
-                {
-                    "code": "dr",
-                    "title": "Defense Rating from 1 (poor) to 10 (incredible)",
-                    "type": "select",
-                    "choices": {
-                        "x": "-",
-                        "1": "1",
-                        "2": "2",
-                        "3": "3",
-                        "4": "4",
-                        "5": "5",
-                        "6": "6",
-                        "7": "7",
-                        "8": "8",
-                        "9": "9",
-                        "10": "10"
-                    },
-                    "defaultValue": "x",
-                    "required": false
-                },
-                {
-                    "code": "d",
-                    "title": "Died",
+                    "code": "diebreak",
+                    "title": "Robot died/had breakdown in functionality",
                     "type": "boolean",
                     "defaultValue": false,
                     "required": false
                 },
                 {
-                    "code": "to",
-                    "title": "Tipped Over",
+                    "code": "tipped",
+                    "title": "Robot tipped/fell over",
                     "type": "boolean",
                     "defaultValue": false,
                     "required": false
                 },
                 {
-                    "code": "cf",
-                    "title": "Yellow/Red Card",
+                    "code": "foulcard",
+                    "title": "Robot received fouls or a yellow/red card",
                     "type": "boolean",
                     "defaultValue": false,
                     "required": false
@@ -319,6 +253,37 @@
                     "min": 0,
                     "max": 50,
                     "required": true
+                },
+				{
+                    "code": "ds",
+                    "title": "Driver Skill ranking compared to other robots on the field from 1 (best) to 6 (worst)",
+                    "type": "select",
+                    "choices": {
+                        "": "-",
+                        "1": "1: Best",
+                        "2": "2",
+                        "3": "3",
+                        "4": "4",
+                        "5": "5",
+                        "6": "6: Worst"
+                    },
+                    "defaultValue": "",
+                    "required": true
+                },
+                {
+                    "code": "dr",
+                    "title": "Defense Rating from 1 (incredible) to 5 (poor)",
+                    "type": "select",
+                  "choices": {
+                    "x": "Did not defend",
+                    "1": "1: Incredible",
+                    "2": "2: Good",
+                    "3": "3: Average",
+                    "4": "4: Ok",
+                    "5": "5: Poor"
+                  },
+                    "defaultValue": "x",
+                    "required": false
                 }
             ]
         }

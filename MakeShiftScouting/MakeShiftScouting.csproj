@@ -24,7 +24,7 @@
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">22.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
@@ -51,6 +51,8 @@
 	  <AndroidKeyStore>False</AndroidKeyStore>
 	  <ApplicationTitle>MakeShift Scouting</ApplicationTitle>
 	  <ApplicationId>com.makeshift.scouting</ApplicationId>
+	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
@@ -58,26 +60,36 @@
 	  <AndroidPackageFormat>apk</AndroidPackageFormat>
 	  <ApplicationTitle>MakeShift Scouting</ApplicationTitle>
 	  <ApplicationId>com.makeshift.scouting</ApplicationId>
+	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
 	  <ApplicationTitle>MakeShift Scouting</ApplicationTitle>
 	  <ApplicationId>com.makeshift.scouting</ApplicationId>
+	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationTitle>MakeShift Scouting</ApplicationTitle>
 	  <ApplicationId>com.makeshift.scouting</ApplicationId>
+	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
 	  <ApplicationTitle>MakeShift Scouting</ApplicationTitle>
 	  <ApplicationId>com.makeshift.scouting</ApplicationId>
+	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
 	  <ApplicationTitle>MakeShift Scouting</ApplicationTitle>
 	  <ApplicationId>com.makeshift.scouting</ApplicationId>
+	  <ApplicationDisplayVersion>1.2.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>2</ApplicationVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -103,8 +115,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiCss Update="SupportFiles\bootstrap.min.css">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiCss>
 	  <MauiCss Update="SupportFiles\MakeShiftScoutingPage.css">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </MauiCss>
 	</ItemGroup>
 

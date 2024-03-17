@@ -1,9 +1,12 @@
+body{font-size:21;
+background-color: #212121}
+
 .centered {
 	text-align: center;
 }
 
 .verticalSpacerBottom {
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 }
 
 .italics {
@@ -15,7 +18,7 @@
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	font-weight: bold;
-	font-family: Broadway;
+	font-family: Calibri Bold;
 }
 
 .versioning {
@@ -25,10 +28,10 @@
 }
 
 .columnContents {
-	width: 23%;
+	width: 33%;
 	padding: 1%;
-	border: 2px solid white;
-	background-color: #E8E8E8;
+	border: 2px solid #212121;
+	background-color: #EEEEEE;
 }
 
 .sectionHeader {
@@ -72,8 +75,10 @@
 }
 
 .checkboxStyle {
-	width: 25%;
-	height: 25px;
+	width: 28%;
+	height: 28px;
+	border-radius:6px;
+	border:1px solid #BDBDBD;
 }
 
 .button {
@@ -86,10 +91,12 @@
 
 .buttonSubmit {
 	background-image: linear-gradient(to right, red, orange, yellow, green, #4287f5);
+	margin-top: 160px;
 }
 
 .buttonReset {
 	background-color: red;
+	margin-top: 180px;
 }
 
 .buttonClose {
@@ -103,14 +110,18 @@
 }
 .minus, .plus{
 	cursor:pointer;
-	width:25px;
-	height:25px;
-	background:#f2f2f2;
+	width:30px;
+	height:30px;
+	margin-left: 33px;
+	margin-right: 33px;
+	background:#BDBDBD;
 	border-radius:4px;
 	border:1px solid #ddd;
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
 }
 .counter{
 	width: 100px;
