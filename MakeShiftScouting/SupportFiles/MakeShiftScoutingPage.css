@@ -1,0 +1,138 @@
+body{font-size:21;
+background-color: #212121}
+
+.centered {
+	text-align: center;
+}
+
+.verticalSpacerBottom {
+	margin-bottom: 15px;
+}
+
+.italics {
+	font-style: italic;
+}
+ 
+.gameName {
+	background-image: linear-gradient(to right, red, orange, yellow, green, #4287f5);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	font-family: Calibri Bold;
+}
+
+.versioning {
+	margin-top: 30px;
+	color: slategrey;
+	font-weight: bold;
+}
+
+.columnContents {
+	width: 33%;
+	padding: 1%;
+	border: 2px solid #212121;
+	background-color: #EEEEEE;
+}
+
+.sectionHeader {
+	font-weight: bold;
+	padding: 1px
+}
+
+.headerBackground1 {
+	background-color: red;
+}
+
+.headerBackground2 {
+	background-color: orange;
+}
+
+.headerBackground3 {
+	background-color: yellow;
+}
+
+.headerBackground4 {
+	background-color: green;
+	color: white;
+}
+
+.headerBackground5 {
+	background-color: #4287f5;
+	color: white;
+}
+
+.fieldTitle {
+	font-weight: bold;
+	text-align: left;
+	margin-top: 4px;
+	font-size: smaller;
+}
+
+.fieldStyle {
+	width: 95%;
+	margin-bottom: 5px;
+	padding-left: 10px;
+}
+
+.checkboxStyle {
+	width: 28%;
+	height: 28px;
+	border-radius:6px;
+	border:1px solid #BDBDBD;
+}
+
+.button {
+	padding: 15px;
+	font-family: Cooper;
+	font-size: larger;
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.buttonSubmit {
+	background-image: linear-gradient(to right, red, orange, yellow, green, #4287f5);
+	margin-top: 130px;
+}
+
+.buttonReset {
+	background-color: red;
+	margin-top: 150px;
+}
+
+.buttonRecover {
+	background-color: #4287f5;
+	margin-top: 30px;
+}
+
+.buttonClose {
+	padding: 7px 10px 7px 10px;
+	background-color: #4287f5;
+}
+
+/*Counter field with -/+ buttons*/
+.number {
+	margin-bottom: 5px;
+}
+.minus, .plus{
+	cursor:pointer;
+	width:30px;
+	height:30px;
+	margin-left: 33px;
+	margin-right: 33px;
+	background:#BDBDBD;
+	border-radius:4px;
+	border:1px solid #ddd;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+.counter{
+	width: 100px;
+	text-align: center;
+	border:1px solid #ddd;
+	border-radius:4px;
+	display: inline-block;
+	vertical-align: middle;
+}
