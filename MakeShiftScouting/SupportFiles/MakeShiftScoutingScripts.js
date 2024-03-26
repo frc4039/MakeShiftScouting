@@ -17,14 +17,9 @@ $(document).ready(function() {
 		});
 
 	$('#scoutingForm').on('submit', function (e) {
-		//gather the form data into a tab separated string
-		const form = $('#scoutingForm')[0];
-		const submitter = $('#generateQrCode')[0];
-		const formData = new FormData(form, submitter);
-		let output = "";
-		for (const [key, value] of formData) {
-			output += `${value}\t`;
-		}
+		output = getSanitizedOutput();
+
+		$('#savedData').val(output);
 
 		//generate QR Code from data
 		const qrCodeDiv = $('#qrcode')[0];
@@ -38,6 +33,10 @@ $(document).ready(function() {
 	});
 
 	$('#resetFields').on('click', function () {
+		output = getSanitizedOutput();
+
+		$('#savedData').val(output);
+
 		$.each($('.resettingList'), function () { $(this).get(0).selectedIndex = 0; });
 		$.each($('.resettingText'), function () { $(this).val(''); });
 		$.each($('.plainNumber'), function () { $(this).val(''); });
@@ -48,4 +47,39 @@ $(document).ready(function() {
 			$(this).val(parseInt($(this).val()) + 1);
 		});
 	});
+
+	$('#recoverFields').on('click', function () {
+		const form = $('#scoutingForm')[0];
+		if ($('#savedData').val() != '') {
+			const reload = $('#savedData').val().split('\t');
+			const submitter = $('#generateQrCode')[0];
+			const formData = new FormData(form, submitter);
+			iCount = 0;
+			for (const [key, value] of formData) {
+				if (reload[iCount] == 'true') {
+					$('[data-id=' + key + ']').prop("checked", true);
+				}
+				else {
+					$('#' + key).val(reload[iCount]);
+				}
+				iCount++;
+			}
+		}
+		$('#savedData').val('');
+	});
+
+	function getSanitizedOutput() {
+		//gather the form data into a tab separated string
+		const form = $('#scoutingForm')[0];
+		const submitter = $('#generateQrCode')[0];
+		const formData = new FormData(form, submitter);
+		let output = "";
+		for (const [key, value] of formData) {
+			output += `${value}\t`;
+		}
+
+		//sanitize the output for CR's
+		output = output.replace(/(\r\n|\n|\r)/gm, " - ");
+		return output;
+	};
 });

@@ -91,12 +91,17 @@ background-color: #212121}
 
 .buttonSubmit {
 	background-image: linear-gradient(to right, red, orange, yellow, green, #4287f5);
-	margin-top: 160px;
+	margin-top: 130px;
 }
 
 .buttonReset {
 	background-color: red;
-	margin-top: 180px;
+	margin-top: 150px;
+}
+
+.buttonRecover {
+	background-color: #4287f5;
+	margin-top: 30px;
 }
 
 .buttonClose {
